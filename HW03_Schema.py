@@ -2,10 +2,10 @@ from pyspark.sql import SparkSession
 from pyspark.sql.types import *
 from pyspark.sql.types import StructType
 
-spark = SparkSession \
-    .builder \
+spark = SparkSession.builder \
+    .appName("DE_ETL") \
     .master("local[*]") \
-    .appName("spark.executor.memory","4g") \
+    .config("spark.executor.memory","4g") \
     .getOrCreate()
 
 jsonData = spark.read.json("Data/2015-03-01-17.json")
